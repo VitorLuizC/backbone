@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // Module
+    "module": "ES2022",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+
+    // Output
+    "target": "ES3",
+    "sourceMap": true
+  },
+  "include": ["./src"]
+}

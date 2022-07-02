@@ -13,26 +13,30 @@
   ],
   "author": "Jeremy Ashkenas",
   "dependencies": {
+    "tslib": "^2.4.0",
     "underscore": ">=1.8.3"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/jquery": "^3.5.14",
+    "@types/underscore": "^1.11.4",
     "coffeescript": "^2.7.0",
     "cpy-cli": "^3.1.1",
     "docco": "^0.9.1",
     "eslint": "^8.7.0",
+    "jquery": "^3.6.0",
     "karma": "^6.3.11",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-qunit": "^4.1.2",
     "phantomjs-prebuilt": "^2.1.7",
     "qunit": "^2.17.2",
-    "typescript": "^4.7.4",
-    "uglify-js": "^3.14.5"
+    "rollup": "^2.75.7",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "test": "karma start && coffee test/model.coffee && npm run lint",
-    "build:transpile": "tsc ./src/main.ts --outFile ./backbone.js",
-    "build:minify": "uglifyjs backbone.js --mangle --source-map url=backbone-min.js.map -o backbone-min.js",
-    "build": "npm run build:transpile; npm run build:minify",
+    "build": "rollup --config ./rollup.config.js",
     "alias-sourcemap": "cpy --rename=backbone-min.map backbone-min.js.map .",
     "doc": "docco backbone.js && docco examples/todos/todos.js examples/backbone.localStorage.js",
     "lint": "eslint backbone.js test/*.js",
